@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 640" width="1020" height="640" font-family="Helvetica, Arial, sans-serif">
+<rect width="1020" height="640" fill="#ffffff"/>
+<defs>
+  <marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#111"/>
+  </marker>
+  <marker id="ap" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#c0392b"/>
+  </marker>
+</defs>
+
+<text x="34" y="42" font-size="22" font-weight="bold" fill="#111">Ultrasonic Water-Level Sensor &amp; Controller</text>
+<text x="34" y="64" font-size="13" fill="#666">System block diagram — sensing, display, and closed-loop pump control</text>
+<line x1="34" y1="78" x2="986" y2="78" stroke="#111" stroke-width="1.5"/>
+
+<!-- POWER -->
+<rect x="34" y="110" width="170" height="66" rx="4" fill="#fdf3f2" stroke="#c0392b" stroke-width="2"/>
+<text x="119" y="139" font-size="14" font-weight="bold" fill="#c0392b" text-anchor="middle">POWER SUPPLY</text>
+<text x="119" y="159" font-size="12" fill="#c0392b" text-anchor="middle">12 V DC adapter</text>
+
+<!-- SWITCH -->
+<rect x="240" y="110" width="120" height="66" rx="4" fill="#fdf3f2" stroke="#c0392b" stroke-width="2"/>
+<text x="300" y="141" font-size="14" font-weight="bold" fill="#c0392b" text-anchor="middle">SWITCH</text>
+<text x="300" y="160" font-size="12" fill="#c0392b" text-anchor="middle">mains rocker</text>
+<line x1="204" y1="143" x2="236" y2="143" stroke="#c0392b" stroke-width="2.5" marker-end="url(#ap)"/>
+
+<line x1="300" y1="176" x2="300" y2="250" stroke="#c0392b" stroke-width="2.5"/>
+<line x1="300" y1="250" x2="386" y2="250" stroke="#c0392b" stroke-width="2.5" marker-end="url(#ap)"/>
+<line x1="360" y1="143" x2="946" y2="143" stroke="#c0392b" stroke-width="2.5"/>
+<line x1="946" y1="143" x2="946" y2="400" stroke="#c0392b" stroke-width="2.5"/>
+<line x1="946" y1="400" x2="890" y2="400" stroke="#c0392b" stroke-width="2.5" marker-end="url(#ap)"/>
+<text x="600" y="136" font-size="11.5" fill="#c0392b">12 V motor rail</text>
+
+<!-- ARDUINO -->
+<rect x="390" y="228" width="230" height="180" rx="5" fill="#eef6f9" stroke="#111" stroke-width="2.5"/>
+<text x="505" y="300" font-size="20" font-weight="bold" fill="#111" text-anchor="middle">ARDUINO UNO</text>
+<text x="505" y="324" font-size="12.5" fill="#555" text-anchor="middle">level calculation</text>
+<text x="505" y="343" font-size="12.5" fill="#555" text-anchor="middle">10 % / 90 % hysteresis</text>
+
+<!-- HC-SR04 -->
+<rect x="34" y="256" width="170" height="76" rx="4" fill="#fff" stroke="#111" stroke-width="2"/>
+<text x="119" y="286" font-size="14" font-weight="bold" fill="#111" text-anchor="middle">HC-SR04</text>
+<text x="119" y="306" font-size="12" fill="#555" text-anchor="middle">ultrasonic sensor</text>
+<text x="119" y="323" font-size="11" fill="#888" text-anchor="middle">mounted above tank</text>
+<line x1="204" y1="294" x2="386" y2="294" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<text x="295" y="286" font-size="11.5" fill="#333" text-anchor="middle">TRIG → D12</text>
+<text x="295" y="310" font-size="11.5" fill="#333" text-anchor="middle">ECHO → D10</text>
+
+<!-- BUTTON -->
+<rect x="210" y="430" width="160" height="68" rx="4" fill="#fff" stroke="#111" stroke-width="2"/>
+<text x="290" y="457" font-size="14" font-weight="bold" fill="#111" text-anchor="middle">BUTTON</text>
+<text x="290" y="476" font-size="12" fill="#555" text-anchor="middle">manual override</text>
+<line x1="370" y1="464" x2="440" y2="464" stroke="#111" stroke-width="2"/>
+<line x1="440" y1="464" x2="440" y2="412" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+
+<!-- LCD -->
+<rect x="716" y="228" width="170" height="76" rx="4" fill="#fff" stroke="#111" stroke-width="2"/>
+<text x="801" y="257" font-size="14" font-weight="bold" fill="#111" text-anchor="middle">LCD UNIT</text>
+<text x="801" y="277" font-size="12" fill="#555" text-anchor="middle">16×2 I²C · 0x27</text>
+<text x="801" y="294" font-size="11" fill="#888" text-anchor="middle">level % + pump state</text>
+<line x1="620" y1="266" x2="712" y2="266" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<text x="666" y="258" font-size="11.5" fill="#333" text-anchor="middle">I²C</text>
+<text x="666" y="282" font-size="10.5" fill="#888" text-anchor="middle">A4 / A5</text>
+
+<!-- L298N -->
+<rect x="716" y="386" width="170" height="76" rx="4" fill="#fff" stroke="#111" stroke-width="2"/>
+<text x="801" y="415" font-size="14" font-weight="bold" fill="#111" text-anchor="middle">L298N</text>
+<text x="801" y="435" font-size="12" fill="#555" text-anchor="middle">motor driver</text>
+<text x="801" y="452" font-size="11" fill="#888" text-anchor="middle">switches 12 V rail</text>
+<line x1="620" y1="370" x2="668" y2="370" stroke="#111" stroke-width="2"/>
+<line x1="668" y1="370" x2="668" y2="424" stroke="#111" stroke-width="2"/>
+<line x1="668" y1="424" x2="712" y2="424" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<text x="640" y="362" font-size="11.5" fill="#333" text-anchor="middle">IN / EN</text>
+
+<!-- PUMP -->
+<rect x="716" y="530" width="170" height="72" rx="4" fill="#fff" stroke="#111" stroke-width="2"/>
+<text x="801" y="559" font-size="14" font-weight="bold" fill="#111" text-anchor="middle">PUMP</text>
+<text x="801" y="579" font-size="12" fill="#555" text-anchor="middle">submersible DC</text>
+<line x1="801" y1="462" x2="801" y2="526" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+
+<!-- TANK -->
+<path d="M 34,502 L 34,592 L 204,592 L 204,502" fill="none" stroke="#2980b9" stroke-width="2.5"/>
+<path d="M 34,540 Q 76,532 119,540 Q 162,548 204,540 L 204,592 L 34,592 Z" fill="#d6eaf8" stroke="#2980b9" stroke-width="1.5"/>
+<text x="119" y="612" font-size="12" fill="#2980b9" text-anchor="middle">5 L tank</text>
+<line x1="119" y1="332" x2="119" y2="536" stroke="#888" stroke-width="1.5" stroke-dasharray="5,5"/>
+<text x="132" y="400" font-size="11" fill="#888">echo off</text>
+<text x="132" y="414" font-size="11" fill="#888">water surface</text>
+<line x1="801" y1="602" x2="801" y2="624" stroke="#2980b9" stroke-width="2"/>
+<line x1="801" y1="624" x2="250" y2="624" stroke="#2980b9" stroke-width="2"/>
+<line x1="250" y1="624" x2="250" y2="566" stroke="#2980b9" stroke-width="2"/>
+<line x1="250" y1="566" x2="208" y2="566" stroke="#2980b9" stroke-width="2" marker-end="url(#a)"/>
+<text x="540" y="618" font-size="11" fill="#2980b9" text-anchor="middle">fill</text>
+
+<!-- CONTROL LAW -->
+<rect x="390" y="486" width="230" height="112" rx="4" fill="#fbfbfb" stroke="#bbb" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="505" y="509" font-size="12" font-weight="bold" fill="#555" text-anchor="middle">CONTROL LAW</text>
+<text x="404" y="532" font-size="11.5" fill="#333">level &lt; 10 %  →  pump ON</text>
+<text x="404" y="552" font-size="11.5" fill="#333">level &gt; 90 %  →  pump OFF</text>
+<text x="404" y="576" font-size="11" fill="#888">80-point deadband between the</text>
+<text x="404" y="590" font-size="11" fill="#888">thresholds prevents pump chatter</text>
+
+<text x="986" y="638" font-size="11" fill="#999" text-anchor="end">Mini-project · Basic Electronics (BBEE203) · AITM Bhatkal</text>
+</svg>
